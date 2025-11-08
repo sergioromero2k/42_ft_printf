@@ -5,23 +5,20 @@ int	suma(int cantidad, ...)
 {
 	va_list	args;
 	int		total;
-	int		i;
 	int		num;
 
 	va_start(args, cantidad);
 	total = 0;
-	i = 0;
-	while (i < cantidad)
+	for (int i = 0; i < cantidad; i++)
 	{
 		num = va_arg(args, int);
+		printf("%d\n", num);
 		total += num;
-		i++;
 	}
 	va_end(args);
 	return (total);
 }
 int	main(void)
 {
-	printf("Suma %d\n", suma(4, 10, 20, 30, 40)); // 100
-	return (0);
+	printf("Suma: %d\n", suma(4, 19, 20, 30, 40));
 }
