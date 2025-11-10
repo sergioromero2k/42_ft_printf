@@ -14,4 +14,6 @@ void	ft_putstr_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
 size_t	ft_strlen_fd(const char *s);
 void	ft_putnbr_unisgned_fd(int n, int fd);
+void	ft_puthex_fd(unsigned int n, int fd);
+void	ft_puthex_upper_fd(unsigned int n, int fd);
 #endif

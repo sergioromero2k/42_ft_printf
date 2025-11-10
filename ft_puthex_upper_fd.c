@@ -1,31 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_puthex_fd.c                                     :+:      :+:    :+:   */
+/*   ft_puthex_upper_fd.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sergio-alejandro <sergio-alejandro@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/10 11:50:03 by sergio-alej       #+#    #+#             */
-/*   Updated: 2025/11/10 12:25:59 by sergio-alej      ###   ########.fr       */
+/*   Created: 2025/11/10 12:26:10 by sergio-alej       #+#    #+#             */
+/*   Updated: 2025/11/10 12:26:59 by sergio-alej      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-void	ft_puthex_fd(unsigned int n, int fd)
+void	ft_puthex_upper_fd(unsigned int n, int fd)
 {
-	if (n < 0)
-	{
-		ft_putchar_fd('-', fd);
-		return ;
-	}
-	if (n > 15)
-	{
-		ft_puthex_fd(n / 16, fd);
-		ft_putchar_fd(n % 16 + '0', fd);
-	}
-	else
-	{
-		ft_putchar_fd('0', fd);
-	}
 }

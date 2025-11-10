@@ -6,7 +6,7 @@
 /*   By: sergio-alejandro <sergio-alejandro@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/10 10:39:56 by sergio-alej       #+#    #+#             */
-/*   Updated: 2025/11/10 11:42:36 by sergio-alej      ###   ########.fr       */
+/*   Updated: 2025/11/10 12:21:20 by sergio-alej      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_putnbr_fd(int n, int fd)
 {
-	if (n == -2147483648)
+	if (n == INT_MIN)
 	{
 		ft_putstr_fd("-2147483648", fd);
 		return ;
@@ -30,7 +30,7 @@ void	ft_putnbr_fd(int n, int fd)
 		ft_putchar_fd(n % 10 + '0', fd);
 	}
 	else
+	{
 		ft_putchar_fd(n + '0', fd);
+	}
 }
-
-

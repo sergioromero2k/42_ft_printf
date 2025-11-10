@@ -44,6 +44,7 @@ m
 	}
 	else if (c == '%')
 	{
+		ft_putchar_fd('%', 1);
 	}
 }
 
