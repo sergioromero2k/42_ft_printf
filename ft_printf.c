@@ -1,3 +1,4 @@
+m
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
@@ -12,38 +13,62 @@
 
 #include <libftprintf.h>
 
-const char	*handle_specifier(char c, va_list args, int count)
+	const char *
+	handle_specifier(char c, va_list args, int count)
 {
-	if (c == 's')
+	if (c == 'c')
 	{
 		ft_putchar_fd(va_arg(args, int), 1);
 	}
 	else if (c == 's')
 	{
 		ft_putstr_fd(va_arg(args, (char *)), 1);
-	}else if(c=='p'){
-		ft_print_ptr(
-
-	int ft_printf(char const *format, ...)
+	}
+	else if (c == 'p')
 	{
-		va_list args;
+		ft_print_ptr();
+	}
+	else if (c == 'd' || c == 'i')
+	{
+		ft_putnbr(va_arg(args, int), 1);
+	}
+	else if (c == 'u')
+	{
+		ft_putnbr_unisgned_fd(va_arg(args, int), 1);
+	}
+	else if (c == 'x')
+	{
+	}
+	else if (c == 'X')
+	{
+	}
+	else if (c == '%')
+	{
+	}
+}
 
-		var_arg(args, x);
-		int count;
+int	ft_printf(char const *format, ...)
+{
+	va_list	args;
+	int		count;
+	int		i;
 
-		count = 0;
-		if (!format)
-			return (-1);
-
-		while (format[i] == '\0')
+	var_arg(args, format);
+	count = 0;
+	i = 0;
+	if (!format)
+		return (-1);
+	while (format[i] == '\0')
+	{
+		if (format[i] == '%')
 		{
-			if (format[i] == '%')
-			{
-				handle_specifier(format[i++], args, count);
-			}
-			else
-			{
-				write(1, format[i], 1);
-			}
+			handle_specifier(format[i++], args, count);
+		}
+		else
+		{
+			write(1, format[i], 1);
 		}
 	}
+	va_end(args);
+	return (count);
+}
