@@ -6,7 +6,7 @@
 /*   By: serromer <serromer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 10:16:30 by serromer          #+#    #+#             */
-/*   Updated: 2025/11/13 11:21:04 by serromer         ###   ########.fr       */
+/*   Updated: 2025/11/13 12:07:07 by serromer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	print_number_letter(int n, int fd)
 	n %= 16;
 	if (n >= 10 && n <= 15)
 	{
-		n += 55;
+		n += 87;
 		ft_putchar_fd(n, fd);
 	}
 	else
@@ -33,7 +33,7 @@ void	print_number_letter(int n, int fd)
 	}
 }
 
-void	ft_puthex_fd(unsigned int n, int fd)
+void	ft_puthex_fd( int n, int fd)
 {
 	if (n < 0)
 	{
@@ -53,12 +53,14 @@ void	ft_puthex_fd(unsigned int n, int fd)
 
 int	main(void)
 {
-	int number = 1515115;
+	int *number;
+	int i;
 
-	printf("A: %X\n", number);
-	printf("\n");
-	ft_puthex_fd(number, 1);
+	i = 5;
+	number=&i;
 
+	printf("A: %p\n", number);
+	ft_puthex_fd(number,1);
 	// printf("Hola mundo cruel %x\n", number);
 	// printf("Hola mundo cruel %x\n", number);
 	// printf("Hola mundo cruel %x\n", number);

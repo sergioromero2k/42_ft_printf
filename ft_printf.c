@@ -6,7 +6,7 @@
 /*   By: serromer <serromer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/09 10:24:57 by sergio-alej       #+#    #+#             */
-/*   Updated: 2025/11/13 11:22:40 by serromer         ###   ########.fr       */
+/*   Updated: 2025/11/13 12:04:46 by serromer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,11 @@ const char	*handle_specifier(char c, va_list args, int count)
 	}
 	else if (c == 's')
 	{
-		ft_putstr_fd(va_arg(args, (char *)), 1);
+		ft_putstr_fd((char)va_arg(args, (char *)), 1);
 	}
 	else if (c == 'p')
 	{
-		ft_print_ptr();
+		ft_putptr();
 	}
 	else if (c == 'd' || c == 'i')
 	{
