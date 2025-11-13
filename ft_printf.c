@@ -6,7 +6,7 @@
 /*   By: sergio-alejandro <sergio-alejandro@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/09 10:24:57 by sergio-alej       #+#    #+#             */
-/*   Updated: 2025/11/13 22:20:49 by sergio-alej      ###   ########.fr       */
+/*   Updated: 2025/11/13 22:43:12 by sergio-alej      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ const char	*convertidor_parametros(char c, va_list args, int count)
 	}
 	else if (c == 'p')
 	{
-		ft_putptr();
+		ft_putptr(va_arg(args, void *))
 	}
 	else if (c == 'd' || c == 'i')
 	{

@@ -6,19 +6,20 @@
 /*   By: sergio-alejandro <sergio-alejandro@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/09 10:37:30 by sergio-alej       #+#    #+#             */
-/*   Updated: 2025/11/13 22:35:04 by sergio-alej      ###   ########.fr       */
+/*   Updated: 2025/11/13 22:40:39 by sergio-alej      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-void	ft_putstr_fd(char *s)
+void	ft_putstr(char *s)
 {
-	if (!s)
-		return ;
-	while (*s)
+	int	i;
+
+	i = 0;
+	while (s[i] != '\0')
 	{
-		write(1, &s, 1);
-		s++;
+		ft_putchar(s[i]);
+		i++;
 	}
 }

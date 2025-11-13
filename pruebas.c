@@ -6,7 +6,7 @@
 /*   By: sergio-alejandro <sergio-alejandro@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 10:16:30 by serromer          #+#    #+#             */
-/*   Updated: 2025/11/13 22:36:31 by sergio-alej      ###   ########.fr       */
+/*   Updated: 2025/11/13 22:42:30 by sergio-alej      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,13 @@ void	ft_putchar(char c)
 
 void	ft_putstr(char *s)
 {
-	if (!s)
-		return ;
-	while (*s)
+	int	i;
+
+	i = 0;
+	while (s[i] != '\0')
 	{
-		write(1, &s, 1);
-		s++;
+		ft_putchar(s[i]);
+		i++;
 	}
 }
 
@@ -63,7 +64,7 @@ int	main(void)
 
 	i = 5;
 	number = &i;
-	printf("A: %p\n", number);
+	printf("A: %p\n", &i);
 	ft_putptr(number);
 	// printf("Hola mundo cruel %x\n", number);
 	// printf("Hola mundo cruel %x\n", number);
