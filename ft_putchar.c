@@ -1,20 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_unisgned_fd .c                           :+:      :+:    :+:   */
+/*   ft_putchar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: serromer <serromer@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sergio-alejandro <sergio-alejandro@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/10 10:39:56 by sergio-alej       #+#    #+#             */
-/*   Updated: 2025/11/13 10:15:49 by serromer         ###   ########.fr       */
+/*   Created: 2025/11/13 22:01:00 by sergio-alej       #+#    #+#             */
+/*   Updated: 2025/11/13 22:01:03 by sergio-alej      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-void	ft_putnbr_unisgned_fd(int n, int fd)
+void	ft_putchar(char c)
 {
-	if (n > 9)
-		ft_putnbr_unisgned_fd(n / 10, fd);
-	ft_putstr_fd(n % 10 + '0', fd);
+	write(1, &c, 1);
 }

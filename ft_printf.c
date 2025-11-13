@@ -3,24 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: serromer <serromer@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sergio-alejandro <sergio-alejandro@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/09 10:24:57 by sergio-alej       #+#    #+#             */
-/*   Updated: 2025/11/13 12:04:46 by serromer         ###   ########.fr       */
+/*   Updated: 2025/11/13 22:20:49 by sergio-alej      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libftprintf.h>
 
-const char	*handle_specifier(char c, va_list args, int count)
+const char	*convertidor_parametros(char c, va_list args, int count)
 {
 	if (c == 'c')
 	{
-		ft_putchar_fd(va_arg(args, int), 1);
+		ft_putchar(va_arg(args, int));
 	}
 	else if (c == 's')
 	{
-		ft_putstr_fd((char)va_arg(args, (char *)), 1);
+		ft_putstr(va_arg(args, (char *)));
 	}
 	else if (c == 'p')
 	{
@@ -28,7 +28,7 @@ const char	*handle_specifier(char c, va_list args, int count)
 	}
 	else if (c == 'd' || c == 'i')
 	{
-		ft_putnbr(va_arg(args, int), 1);
+		ft_putnbr(va_arg(args, int), 10, "0123456789");
 	}
 	else if (c == 'u')
 	{
@@ -36,11 +36,11 @@ const char	*handle_specifier(char c, va_list args, int count)
 	}
 	else if (c == 'x')
 	{
-		ft_puthex_fd(va_arg(args, int), 1);
+		ft_putnbr(va_arg(args, int), 16, "0123456789abcdef");
 	}
 	else if (c == 'X')
 	{
-		ft_puthex_fd(va_arg(args, int), 1);
+		ft_putnbr(va_arg(args, int), 16, "0123456789ABCDEF");
 	}
 	else if (c == '%')
 	{
@@ -54,7 +54,7 @@ int	ft_printf(char const *format, ...)
 	int		count;
 	int		i;
 
-	var_arg(args, format);
+	va_start(args, format);
 	count = 0;
 	i = 0;
 	if (!format)
@@ -63,11 +63,11 @@ int	ft_printf(char const *format, ...)
 	{
 		if (format[i] == '%')
 		{
-			handle_specifier(format[i++], args, count);
+			convertidor_parametros(format[i++], args, count);
 		}
 		else
 		{
-			write(1, format[i], 1);
+			ft_putchar(format[i]);
 		}
 	}
 	va_end(args);

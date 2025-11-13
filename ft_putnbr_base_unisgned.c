@@ -1,23 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr_unisgned.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sergio-alejandro <sergio-alejandro@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/10 11:08:23 by sergio-alej       #+#    #+#             */
-/*   Updated: 2025/11/10 11:42:20 by sergio-alej      ###   ########.fr       */
+/*   Created: 2025/11/10 10:39:56 by sergio-alej       #+#    #+#             */
+/*   Updated: 2025/11/13 22:24:38 by sergio-alej      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libftprintf.h>
+#include "libftprintf.h"
 
-size_t	ft_strlen(const char *s)
+void	ft_putnbr_base_unisgned(long long int n, int base, char *formato)
 {
-	size_t	i;
-
-	i = 0;
-	while (s[i])
-		i++;
-	return (i);
+	if (n >= base)
+		ft_putnbr_base_unisgned(n / base, base, formato);
+	ft_putstr(formato[n % base]);
 }

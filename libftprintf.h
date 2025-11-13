@@ -9,12 +9,11 @@
 # include <string.h>
 # include <unistd.h>
 
-void	ft_putchar_fd(char c, int fd);
-void	ft_putstr_fd(char *s, int fd);
-void	ft_putnbr_fd(int n, int fd);
-size_t	ft_strlen_fd(const char *s);
-void	ft_putnbr_unisgned_fd(int n, int fd);
-void	ft_puthex_fd(unsigned int n, int fd);
-void	ft_puthex_upper_fd(unsigned int n, int fd);
+void	ft_putchar(char c);
+void	ft_putstr(char *s);
+void	ft_putnbr_base(int n);
+size_t	ft_strlen(const char *s);
+void	ft_putnbr_base_unisgned(int n);
+void	ft_puthex(unsigned int n);
+void	ft_puthex_upper(unsigned int n);
 #endif
-

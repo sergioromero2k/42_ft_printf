@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pruebas.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: serromer <serromer@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sergio-alejandro <sergio-alejandro@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 10:16:30 by serromer          #+#    #+#             */
-/*   Updated: 2025/11/13 12:07:07 by serromer         ###   ########.fr       */
+/*   Updated: 2025/11/13 22:36:31 by sergio-alej      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,53 +14,57 @@
 #include <string.h>
 #include <unistd.h>
 
-void	ft_putchar_fd(char c, int fd)
+void	ft_putchar(char c)
 {
-	write(fd, &c, 1);
+	write(1, &c, 1);
 }
 
-void	print_number_letter(int n, int fd)
+void	ft_putstr(char *s)
 {
-	n %= 16;
-	if (n >= 10 && n <= 15)
+	if (!s)
+		return ;
+	while (*s)
 	{
-		n += 87;
-		ft_putchar_fd(n, fd);
-	}
-	else
-	{
-		ft_putchar_fd(n + '0', fd);
+		write(1, &s, 1);
+		s++;
 	}
 }
 
-void	ft_puthex_fd( int n, int fd)
+void	ft_putnbr_base(long long int n, int base, char *formato)
 {
 	if (n < 0)
 	{
-		ft_putchar_fd('-', fd);
+		n *= -1;
+		ft_putchar('-');
+	}
+	if (n >= base)
+		ft_putnbr_base(n / base, base, formato);
+	ft_putchar(formato[n % base]);
+}
+
+void	ft_putptr(void *ptr)
+{
+	unsigned long	num;
+
+	if (!ptr)
+	{
+		ft_putstr("(nil)");
 		return ;
 	}
-	if (n > 15)
-	{
-		ft_puthex_fd(n / 16, fd);
-		print_number_letter(n, fd);
-	}
-	else
-	{
-		ft_putchar_fd(n + '0', fd);
-	}
+	num = (unsigned long)ptr;
+	ft_putstr("0x");
+	ft_putnbr_base(num, 16, "0123456789abcdef");
 }
 
 int	main(void)
 {
-	int *number;
-	int i;
+	int	*number;
+	int	i;
 
 	i = 5;
-	number=&i;
-
+	number = &i;
 	printf("A: %p\n", number);
-	ft_puthex_fd(number,1);
+	ft_putptr(number);
 	// printf("Hola mundo cruel %x\n", number);
 	// printf("Hola mundo cruel %x\n", number);
 	// printf("Hola mundo cruel %x\n", number);

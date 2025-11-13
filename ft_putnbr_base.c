@@ -1,24 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_putnbr_base.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sergio-alejandro <sergio-alejandro@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/09 10:37:30 by sergio-alej       #+#    #+#             */
-/*   Updated: 2025/11/09 10:37:36 by sergio-alej      ###   ########.fr       */
+/*   Created: 2025/11/10 10:39:56 by sergio-alej       #+#    #+#             */
+/*   Updated: 2025/11/13 22:24:14 by sergio-alej      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-void	ft_putstr_fd(char *s, int fd)
+void	ft_putnbr_base(long long int n, int base, char *formato)
 {
-	if (!s)
-		return (NULL);
-	while (*s)
+	if (n < 0)
 	{
-		write(fd, &s, 1);
-		s++;
+		n *= -1;
+		ft_putchar('-');
 	}
+	if (n >= base)
+		ft_putnbr_base(n / base, base, formato);
+	ft_putchar(formato[n % base]);
 }
