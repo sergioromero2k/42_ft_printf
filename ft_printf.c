@@ -1,20 +1,18 @@
-m
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sergio-alejandro <sergio-alejandro@stud    +#+  +:+       +#+        */
+/*   By: serromer <serromer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/09 10:24:57 by sergio-alej       #+#    #+#             */
-/*   Updated: 2025/11/09 10:37:23 by sergio-alej      ###   ########.fr       */
+/*   Updated: 2025/11/13 11:22:40 by serromer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libftprintf.h>
 
-	const char *
-	handle_specifier(char c, va_list args, int count)
+const char	*handle_specifier(char c, va_list args, int count)
 {
 	if (c == 'c')
 	{
@@ -38,9 +36,11 @@ m
 	}
 	else if (c == 'x')
 	{
+		ft_puthex_fd(va_arg(args, int), 1);
 	}
 	else if (c == 'X')
 	{
+		ft_puthex_fd(va_arg(args, int), 1);
 	}
 	else if (c == '%')
 	{
