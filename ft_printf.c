@@ -6,11 +6,17 @@
 /*   By: sergio-alejandro <sergio-alejandro@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/09 10:24:57 by sergio-alej       #+#    #+#             */
-/*   Updated: 2025/11/14 07:43:38 by sergio-alej      ###   ########.fr       */
+/*   Updated: 2025/11/14 17:49:41 by sergio-alej      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
+
+static int	ft_is_conversion(char c)
+{
+	return (c == 'c' || c == 's' || c == 'p' || c == 'd' || c == 'i' || c == 'u'
+		|| c == 'x' || c == 'X' || c == '%');
+}
 
 void	convertidor_parametros(char c, va_list args, int *count)
 {
@@ -44,17 +50,18 @@ int	ft_printf(char const *format, ...)
 	i = 0;
 	if (!format)
 		return (-1);
-	while (format[i] != '\0')
+	while (format[i])
 	{
 		if (format[i] == '%')
 		{
 			i++;
-			convertidor_parametros(format[i], args, &count);
+			while (format[i] && !ft_is_conversion(format[i]))
+				i++; // IGNORA flags/ancho/lo que sea
+			if (format[i])
+				convertidor_parametros(format[i], args, &count);
 		}
 		else
-		{
-			count += write(1, &(format[i]), 1);
-		}
+			count += write(1, &format[i], 1);
 		i++;
 	}
 	va_end(args);
