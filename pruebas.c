@@ -6,67 +6,37 @@
 /*   By: sergio-alejandro <sergio-alejandro@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 10:16:30 by serromer          #+#    #+#             */
-/*   Updated: 2025/11/13 22:42:30 by sergio-alej      ###   ########.fr       */
+/*   Updated: 2025/11/14 07:48:45 by sergio-alej      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <string.h>
-#include <unistd.h>
-
-void	ft_putchar(char c)
-{
-	write(1, &c, 1);
-}
-
-void	ft_putstr(char *s)
-{
-	int	i;
-
-	i = 0;
-	while (s[i] != '\0')
-	{
-		ft_putchar(s[i]);
-		i++;
-	}
-}
-
-void	ft_putnbr_base(long long int n, int base, char *formato)
-{
-	if (n < 0)
-	{
-		n *= -1;
-		ft_putchar('-');
-	}
-	if (n >= base)
-		ft_putnbr_base(n / base, base, formato);
-	ft_putchar(formato[n % base]);
-}
-
-void	ft_putptr(void *ptr)
-{
-	unsigned long	num;
-
-	if (!ptr)
-	{
-		ft_putstr("(nil)");
-		return ;
-	}
-	num = (unsigned long)ptr;
-	ft_putstr("0x");
-	ft_putnbr_base(num, 16, "0123456789abcdef");
-}
+#include "libftprintf.h"
 
 int	main(void)
 {
-	int	*number;
-	int	i;
+	int		num;
+	char	c;
+	char	*str;
 
-	i = 5;
-	number = &i;
-	printf("A: %p\n", &i);
-	ft_putptr(number);
-	// printf("Hola mundo cruel %x\n", number);
-	// printf("Hola mundo cruel %x\n", number);
-	// printf("Hola mundo cruel %x\n", number);
+	num = 42;
+	c = 'A';
+	str = "Hola Mundo";
+	ft_printf("Función ft_printf:\n");
+	ft_printf("Caracter: %c\n", c);
+	ft_printf("Número: %d\n", num);
+	ft_printf("String: %s\n", str);
+	ft_printf("Hex: %x\n", num);
+	ft_printf("Puntero: %p\n", str);
+	ft_printf("Porcentaje: %%\n");
+	//
+	ft_printf("\n\nFunción printf:\n");
+	printf("Caracter: %c\n", c);
+	printf("Número: %d\n", num);
+	printf("String: %s\n", str);
+	printf("Hex: %x\n", num);
+	printf("Puntero: %p\n", str);
+	printf("Porcentaje: %%\n");
+	return (0);
 }
+
+// ➜ 42_ft_printf git : (main) ✗ cc pruebas.c libftprintf.a - o pruebas
