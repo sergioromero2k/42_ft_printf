@@ -6,7 +6,7 @@
 /*   By: sergio-alejandro <sergio-alejandro@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 06:36:42 by sergio-alej       #+#    #+#             */
-/*   Updated: 2025/11/14 07:26:08 by sergio-alej      ###   ########.fr       */
+/*   Updated: 2025/11/14 08:10:23 by sergio-alej      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void	ft_putchar(char c, int *count)
 }
 void	ft_putstr(char *s, int *count)
 {
+	if (str == NULL)
+		str = "(null)";
 	while (*s)
 	{
 		ft_putchar(*s, count);
