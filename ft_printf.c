@@ -6,17 +6,11 @@
 /*   By: sergio-alejandro <sergio-alejandro@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/09 10:24:57 by sergio-alej       #+#    #+#             */
-/*   Updated: 2025/11/15 06:50:25 by sergio-alej      ###   ########.fr       */
+/*   Updated: 2025/11/15 18:05:15 by sergio-alej      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
-
-static int	ft_is_conversion(char c)
-{
-	return (c == 'c' || c == 's' || c == 'p' || c == 'd' || c == 'i' || c == 'u'
-		|| c == 'x' || c == 'X' || c == '%');
-}
 
 void	convertidor_parametros(va_list args, char *c, int *count)
 {
@@ -32,9 +26,11 @@ void	convertidor_parametros(va_list args, char *c, int *count)
 		ft_putnbr_base_unsigned(va_arg(args, unsigned int), 10, "0123456789",
 			count);
 	else if (*c == 'x')
-		ft_putnbr_base(va_arg(args, int), 16, "0123456789abcdef", count);
+		ft_putnbr_base((long long int)va_arg(args, int), 16, "0123456789abcdef",
+			count);
 	else if (*c == 'X')
-		ft_putnbr_base(va_arg(args, int), 16, "0123456789ABCDEF", count);
+		ft_putnbr_base((long long int)va_arg(args, int), 16, "0123456789ABCDEF",
+			count);
 	else if (*c == '%')
 		ft_putchar('%', count);
 }
@@ -59,6 +55,6 @@ int	ft_printf(char const *format, ...)
 		else
 			ft_putchar(*str, &counter) str++;
 	}
-	va_end(va);
+	va_end(args);
 	return (count);
 }
