@@ -6,13 +6,13 @@
 /*   By: sergio-alejandro <sergio-alejandro@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/09 10:24:57 by sergio-alej       #+#    #+#             */
-/*   Updated: 2025/11/15 18:05:15 by sergio-alej      ###   ########.fr       */
+/*   Updated: 2025/11/15 19:18:28 by sergio-alej      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-void	convertidor_parametros(va_list args, char *c, int *count)
+void	convertidor_parametros(va_list args, char *c, size_t *count)
 {
 	if (*c == 'c')
 		ft_putchar(va_arg(args, int), count);
@@ -20,17 +20,15 @@ void	convertidor_parametros(va_list args, char *c, int *count)
 		ft_putstr(va_arg(args, char *), count);
 	else if (*c == 'p')
 		ft_putptr(va_arg(args, void *), count);
-	else if (*c == 'd' || c == 'i')
+	else if (*c == 'd' || *c == 'i')
 		ft_putnbr_base(va_arg(args, int), 10, "0123456789", count);
 	else if (*c == 'u')
 		ft_putnbr_base_unsigned(va_arg(args, unsigned int), 10, "0123456789",
 			count);
 	else if (*c == 'x')
-		ft_putnbr_base((long long int)va_arg(args, int), 16, "0123456789abcdef",
-			count);
+		ft_putnbr_base(va_arg(args, int), 16, "0123456789abcdef", count);
 	else if (*c == 'X')
-		ft_putnbr_base((long long int)va_arg(args, int), 16, "0123456789ABCDEF",
-			count);
+		ft_putnbr_base(va_arg(args, int), 16, "0123456789ABCDEF", count);
 	else if (*c == '%')
 		ft_putchar('%', count);
 }
@@ -38,8 +36,7 @@ void	convertidor_parametros(va_list args, char *c, int *count)
 int	ft_printf(char const *format, ...)
 {
 	va_list	args;
-	int		count;
-	int		i;
+	size_t	count;
 
 	va_start(args, format);
 	count = 0;
@@ -50,10 +47,11 @@ int	ft_printf(char const *format, ...)
 		if (*format == '%')
 		{
 			format++;
-			convertidor_parametros(args, *format, &count);
+			convertidor_parametros(args, (char *)format, &count);
 		}
 		else
-			ft_putchar(*str, &counter) str++;
+			ft_putchar(*format, &count);
+		format++;
 	}
 	va_end(args);
 	return (count);

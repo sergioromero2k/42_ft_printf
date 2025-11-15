@@ -9,12 +9,12 @@
 # include <string.h>
 # include <unistd.h>
 
-void	ft_putchar(char c, int *count);
-void	ft_putstr(char *s, int *count);
-void	ft_putptr(void *ptr, int *count);
-void	ft_putnbr_base(long long int n, int base, char *formato, int *count);
+void	ft_putchar(char c, size_t *count);
+void	ft_putstr(char *s, size_t *count);
+void	ft_putptr(void *ptr, size_t *count);
+void	ft_putnbr_base(long long int n, int base, char *formato, size_t *count);
 void	ft_putnbr_base_unsigned(long long int n, int base, char *formato,
-			int *count);
+			size_t *count);
 size_t	ft_strlen(const char *s);
 int		ft_printf(char const *format, ...);
 #endif
