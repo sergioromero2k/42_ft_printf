@@ -1,16 +1,14 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_utils.c                                  :+:      :+:    :+:   */
+/*   ft_putchar_pf.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sergio-alejandro <sergio-alejandro@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/15 07:06:09 by sergio-alej       #+#    #+#             */
-/*   Updated: 2025/11/15 07:07:26 by sergio-alej      ###   ########.fr       */
+/*   Created: 2025/11/15 07:08:14 by sergio-alej       #+#    #+#             */
+/*   Updated: 2025/11/15 07:08:16 by sergio-alej      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "libftprintf.h"
 
 void	ft_putchar(char s, size_t *counter)
 {

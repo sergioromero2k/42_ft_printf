@@ -6,7 +6,7 @@
 /*   By: sergio-alejandro <sergio-alejandro@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/09 10:24:57 by sergio-alej       #+#    #+#             */
-/*   Updated: 2025/11/14 17:49:41 by sergio-alej      ###   ########.fr       */
+/*   Updated: 2025/11/15 06:50:25 by sergio-alej      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,24 +18,24 @@ static int	ft_is_conversion(char c)
 		|| c == 'x' || c == 'X' || c == '%');
 }
 
-void	convertidor_parametros(char c, va_list args, int *count)
+void	convertidor_parametros(va_list args, char *c, int *count)
 {
-	if (c == 'c')
+	if (*c == 'c')
 		ft_putchar(va_arg(args, int), count);
-	else if (c == 's')
+	else if (*c == 's')
 		ft_putstr(va_arg(args, char *), count);
-	else if (c == 'p')
+	else if (*c == 'p')
 		ft_putptr(va_arg(args, void *), count);
-	else if (c == 'd' || c == 'i')
+	else if (*c == 'd' || c == 'i')
 		ft_putnbr_base(va_arg(args, int), 10, "0123456789", count);
-	else if (c == 'u')
+	else if (*c == 'u')
 		ft_putnbr_base_unsigned(va_arg(args, unsigned int), 10, "0123456789",
 			count);
-	else if (c == 'x')
+	else if (*c == 'x')
 		ft_putnbr_base(va_arg(args, int), 16, "0123456789abcdef", count);
-	else if (c == 'X')
+	else if (*c == 'X')
 		ft_putnbr_base(va_arg(args, int), 16, "0123456789ABCDEF", count);
-	else if (c == '%')
+	else if (*c == '%')
 		ft_putchar('%', count);
 }
 
@@ -47,23 +47,18 @@ int	ft_printf(char const *format, ...)
 
 	va_start(args, format);
 	count = 0;
-	i = 0;
 	if (!format)
 		return (-1);
-	while (format[i])
+	while (*format)
 	{
-		if (format[i] == '%')
+		if (*format == '%')
 		{
-			i++;
-			while (format[i] && !ft_is_conversion(format[i]))
-				i++; // IGNORA flags/ancho/lo que sea
-			if (format[i])
-				convertidor_parametros(format[i], args, &count);
+			format++;
+			convertidor_parametros(args, *format, &count);
 		}
 		else
-			count += write(1, &format[i], 1);
-		i++;
+			ft_putchar(*str, &counter) str++;
 	}
-	va_end(args);
+	va_end(va);
 	return (count);
 }
