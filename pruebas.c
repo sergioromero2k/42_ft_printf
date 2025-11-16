@@ -6,7 +6,7 @@
 /*   By: sergio-alejandro <sergio-alejandro@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 10:16:30 by serromer          #+#    #+#             */
-/*   Updated: 2025/11/14 07:48:45 by sergio-alej      ###   ########.fr       */
+/*   Updated: 2025/11/15 19:41:32 by sergio-alej      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	main(void)
 	ft_printf("String: %s\n", str);
 	ft_printf("Hex: %x\n", num);
 	ft_printf("Puntero: %p\n", str);
-	ft_printf("Porcentaje: %%\n");
+	ft_printf("Devuelve: %d\n", ft_printf("%d\n", num));
 	//
 	ft_printf("\n\nFunción printf:\n");
 	printf("Caracter: %c\n", c);

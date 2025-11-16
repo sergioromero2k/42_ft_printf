@@ -6,13 +6,13 @@
 /*   By: sergio-alejandro <sergio-alejandro@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/09 10:24:57 by sergio-alej       #+#    #+#             */
-/*   Updated: 2025/11/15 19:18:28 by sergio-alej      ###   ########.fr       */
+/*   Updated: 2025/11/16 11:38:07 by sergio-alej      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
-void	convertidor_parametros(va_list args, char *c, size_t *count)
+void	convertidor_parametros(va_list args, char *c, int *count)
 {
 	if (*c == 'c')
 		ft_putchar(va_arg(args, int), count);
@@ -26,9 +26,9 @@ void	convertidor_parametros(va_list args, char *c, size_t *count)
 		ft_putnbr_base_unsigned(va_arg(args, unsigned int), 10, "0123456789",
 			count);
 	else if (*c == 'x')
-		ft_putnbr_base(va_arg(args, int), 16, "0123456789abcdef", count);
+		ft_putnbr_base_unsigned(va_arg(args, unsigned int), 16, "0123456789abcdef", count);
 	else if (*c == 'X')
-		ft_putnbr_base(va_arg(args, int), 16, "0123456789ABCDEF", count);
+		ft_putnbr_base_unsigned(va_arg(args, unsigned int), 16, "0123456789ABCDEF", count);
 	else if (*c == '%')
 		ft_putchar('%', count);
 }
@@ -36,7 +36,7 @@ void	convertidor_parametros(va_list args, char *c, size_t *count)
 int	ft_printf(char const *format, ...)
 {
 	va_list	args;
-	size_t	count;
+	int	count;
 
 	va_start(args, format);
 	count = 0;

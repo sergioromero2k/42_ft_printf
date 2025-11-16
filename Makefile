@@ -3,7 +3,7 @@ RM = rm -rf
 
 CC = cc
 CCFLAGS= -Wall -Werror -Wextra
-INCLUDE = libftprintf.h
+INCLUDE = ft_printf.h
 
 NAME = libftprintf.a 
 SRC = ft_printf.c ft_printf_utils.c ft_strlen.c 
