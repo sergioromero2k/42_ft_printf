@@ -6,7 +6,7 @@
 /*   By: sergio-alejandro <sergio-alejandro@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 06:36:42 by sergio-alej       #+#    #+#             */
-/*   Updated: 2025/11/16 11:41:02 by sergio-alej      ###   ########.fr       */
+/*   Updated: 2025/11/22 20:56:17 by sergio-alej      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void	ft_putchar(char s, int *counter)
 {
 	*counter += write(1, &s, 1);
 }
+
 void	ft_putstr(char *s, int *counter)
 {
 	if (s == NULL)
@@ -26,19 +27,21 @@ void	ft_putstr(char *s, int *counter)
 		s++;
 	}
 }
+
 void	ft_putptr(void *ptr, int *count)
 {
-	unsigned long	num;
+	unsigned long long int	num;
 
 	if (!ptr)
 	{
 		ft_putstr("(nil)", count);
 		return ;
 	}
-	num = (unsigned long)ptr;
+	num = (unsigned long long int)ptr;
 	ft_putstr("0x", count);
 	ft_putnbr_base_unsigned(num, 16, "0123456789abcdef", count);
 }
+
 void	ft_putnbr_base(long long int n, int base, char *formato, int *count)
 {
 	if (n < 0)
@@ -50,10 +53,11 @@ void	ft_putnbr_base(long long int n, int base, char *formato, int *count)
 		ft_putnbr_base(n / base, base, formato, count);
 	ft_putchar(formato[n % base], count);
 }
-void	ft_putnbr_base_unsigned(long long int n, int base, char *formato,
-		int *count)
+
+void	ft_putnbr_base_unsigned(unsigned long long int n, int base,
+		char *formato, int *count)
 {
-	if (n >= base)
+	if (n >= (unsigned long long int)base)
 		ft_putnbr_base_unsigned(n / base, base, formato, count);
 	ft_putchar(formato[n % base], count);
 }

@@ -6,7 +6,7 @@ CCFLAGS= -Wall -Werror -Wextra
 INCLUDE = ft_printf.h
 
 NAME = libftprintf.a 
-SRC = ft_printf.c ft_printf_utils.c ft_strlen.c 
+SRC = ft_printf.c ft_printf_utils.c 
 OBJ_SRC=$(SRC:.c=.o)
 
 all: $(NAME)
